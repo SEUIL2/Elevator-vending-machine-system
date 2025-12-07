@@ -25,10 +25,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/payments").permitAll()   // 결제 요청
 
                         // 2. 관리자 전용 (로그인 필요)
-                        .requestMatchers(HttpMethod.POST, "/api/products").hasRole("ADMIN")   // 상품 등록
-                        .requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN") // 상품 수정
-                        .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN") // 상품 삭제
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN") // 관리자 전용 API
+                        .requestMatchers(HttpMethod.POST, "/api/products").permitAll()   // 상품 등록
+                        .requestMatchers(HttpMethod.PUT, "/api/products/**").permitAll() // 상품 수정
+                        .requestMatchers(HttpMethod.DELETE, "/api/products/**").permitAll() // 상품 삭제
+                        .requestMatchers("/api/admin/**"). permitAll() // 관리자 전용 API
                         // 경욱이 추가한 경로 제품 이미지와 결제
                         .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
                         .requestMatchers("/images/**").permitAll()
